@@ -41,5 +41,6 @@ check.dependsOn goTest
 task cancelStaleDataflowJobs(type: com.github.blindpirate.gogradle.Go) {
   dependsOn ':sdks:go:goModDownload'
   environment 'GO111MODULE', 'on'
+  environment 'GOPATH', "${project(':').projectDir}/../go"
   go('run stale_dataflow_jobs_cleaner.go')
 }

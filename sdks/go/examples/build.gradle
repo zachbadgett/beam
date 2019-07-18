@@ -40,6 +40,7 @@ golang {
   packagePath = 'github.com/apache/beam/sdks/go/examples'
   goBuild {
     dependsOn ':sdks:go:goModDownload'
+    environment 'GOPATH', "${project(':').projectDir}/../go"
     environment 'GO111MODULE', 'on'
 
     // We always want to build linux-amd64 in addition to the user host platform

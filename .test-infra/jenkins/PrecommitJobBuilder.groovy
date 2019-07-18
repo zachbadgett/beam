@@ -105,6 +105,7 @@ class PrecommitJobBuilder {
       allowRemotePoll) // needed for included regions PR triggering; see [JENKINS-23606]
       steps {
         gradle {
+          switches('--debug')
           rootBuildScriptDir(commonJobProperties.checkoutDir)
           tasks(gradleTask)
           gradleSwitches.each { switches(it) }

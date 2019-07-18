@@ -59,6 +59,7 @@ golang {
   goBuild {
     dependsOn ':sdks:go:goModDownload'
     environment 'GO111MODULE', 'on'
+    environment 'GOPATH', "${project(':').projectDir}/../go"
     targetPlatform = ['linux-amd64', 'darwin-amd64']
     go 'build -o ./build/target/${GOOS}_${GOARCH}/boot .'
   }
@@ -71,6 +72,5 @@ docker {
 }
 
 // Ensure that we build the required resources and copy and file dependencies from related projects
-goPrepare.dependsOn ':sdks:go:goPrepare'
 dockerPrepare.dependsOn goBuild
 dockerPrepare.dependsOn copyDockerfileDependencies
